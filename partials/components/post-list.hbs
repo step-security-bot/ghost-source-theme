@@ -23,8 +23,8 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
-                                {{#get "posts" include="authors" limit="16"}}
-                                    {{#foreach posts from="5" limit="12"}}
+                                {{#get "posts" include="authors" limit="24"}}
+                                    {{#foreach posts from="4" limit="24"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
