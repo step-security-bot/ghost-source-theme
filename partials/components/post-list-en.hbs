@@ -8,10 +8,10 @@
 
 <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
-        
+        🇬🇧
         {{#if showTitle}}
             <h2 class="gh-container-title">
-                {{#unless title}} + SREDevOps.org: {{else}}{{title}}{{/unless}}
+                {{#unless title}}Recientes{{else}}{{title}}{{/unless}}
             </h2>
         {{/if}}
 
@@ -23,8 +23,8 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
-                                {{#get "posts" include="authors" limit="24"}}
-                                    {{#foreach posts from="4" limit="24"}}
+                                {{#get "posts" include="authors" limit="16"}}
+                                    {{#foreach posts from="5" limit="12"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
@@ -56,9 +56,9 @@
                 {{/match}}
 
                 {{!-- All posts --}}
-                {{#match feed "index"}}
+                {{#match feed "index-en"}}
                     {{#match pagination.page 2}}
-                        {{#get "posts" include="authors" limit=@config.posts_per_page as |recent|}}
+                        {{#get "posts" include="tags" filter="primary_tag:hash-en" limit=@config.posts_per_page as |recent|}}
                             {{#foreach recent}}
                                 {{> "post-card"}}
                             {{/foreach}}
@@ -71,7 +71,7 @@
 
                 {{!-- Tag and author pages --}}
                 {{#match feed "archive"}}
-                    {{#foreach posts}}
+                    {{#foreach posts filter="primary_tag:hash-en"}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
                 {{/match}}
@@ -92,11 +92,11 @@
                         {{/if}}
                         {{#if @site.members_enabled}}
                             {{#unless @member}}
-                                <button class="gh-button" data-portal="signup">{{t "Subscribe"}}</button>
+                                <button class="gh-button" data-portal="signup">Subscribe</button>
                             {{else}}
                                 {{#if @site.paid_members_enabled}}
                                     {{#unless @member.paid}}
-                                        <button class="gh-button" data-portal="upgrade">{{t "Upgrade"}}</button>
+                                        <button class="gh-button" data-portal="upgrade">Upgrade</button>
                                     {{/unless}}
                                 {{/if}}
                             {{/unless}}
@@ -104,9 +104,9 @@
                     </section>
                     {{#if @site.recommendations_enabled}}
                         <section class="gh-recommendations">
-                            <h4 class="gh-sidebar-title">Recomendados</h4>
+                            <h4 class="gh-sidebar-title">Recommendations</h4>
                             {{recommendations}}
-                            <button data-portal="recommendations" class="gh-button">Ver todos {{> "icons/arrow"}}</button>
+                            <button data-portal="recommendations">See all {{> "icons/arrow"}}</button>
                         </section>
                     {{/if}}
                 </div>
@@ -115,7 +115,7 @@
 
         {{#match pagination.pages ">" 1}}
             <div class="gh-more is-title">
-                <a href="{{@site.url}}/page/2">Ver más en SREDevOps.org {{> "icons/arrow"}}</a>
+                <a href="{{@site.url}}/page/2">View more content {{> "icons/arrow"}}</a>
             </div>
         {{/match}}
 
