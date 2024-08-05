@@ -3,7 +3,7 @@
         {{#if feature_image}}
             <figure class="gh-card-image">
                 <img
-                    srcset="{{img_url feature_image size="xs" format="webp"}} 160w,
+                    srcset="{{img_url feature_image size="xs" format="webp"}} 80w,
                             {{img_url feature_image size="s" format="webp"}} 320w,
                             {{img_url feature_image size="m" format="webp"}} 600w,
                             {{img_url feature_image size="l" format="webp"}} 960w,
@@ -19,6 +19,8 @@
         <div class="gh-card-wrapper">
             {{#if primary_tag}}
                 <p class="gh-card-tag">{{primary_tag.name}}</p>
+            {{else}}
+                <p class="gh-card-tag">{{tags autolink="true" limit="1" from="1" to="1"}}</p>
             {{/if}}
             <h3 class="gh-card-title is-title">{{title}}</h3>
             {{#if custom_excerpt}}
@@ -30,7 +32,7 @@
                 {{/if}}
             {{/unless}}
             <footer class="gh-card-meta">
-                {{tags separator=" | " prefix="Tags:" autolink="true" limit="5" from="2" to="6"}}
+                {{tags separator=" | " prefix="Tags:" autolink="true" limit="4" from="2" to="5"}}
                 {{#unless access}}
                     {{^has visibility="public"}}
                         {{> "icons/lock"}}

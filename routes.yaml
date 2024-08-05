@@ -21,7 +21,7 @@ routes:
     controller: channel
     filter: "tag:hash-home"
     template: home
-
+    rss: true
     
 
 collections:

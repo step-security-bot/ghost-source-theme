@@ -24,8 +24,8 @@
             --background-color: {{@custom.site_background_color}}
         }
     </style>
-{{#is "home"}}
-{{!-- Home dont need change locales --}}
+{{#is "home, page, author"}}
+    {{!-- Home dont need change locales --}}
 {{else}}
     <script>
         /* Set the language attribute on the HTML element based on the subpath of the URL
@@ -52,7 +52,7 @@
     </script>
 {{/is}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css" integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{{asset "built/brands.css"}}">
     {{!-- Ghost outputs important meta data with this tag --}}
     {{ghost_head}}
 

@@ -2,7 +2,7 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.5.9",
+    "version": "1.6.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -41,14 +41,14 @@
         "SREDevOps.org"
     ],
     "devDependencies": {
-        "autoprefixer": "10.4.19",
+        "autoprefixer": "10.4.20",
         "cssnano": "7.0.4",
         "gulp": "5.0.0",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
-        "postcss": "8.4.39",
+        "postcss": "8.4.40",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.0"
     },
@@ -59,7 +59,7 @@
         "posts_per_page": 27,
         "image_sizes": {
             "xs": {
-                "width": 160
+                "width": 80
             },
             "s": {
                 "width": 320
@@ -90,7 +90,7 @@
             },
             "site_background_color": {
                 "type": "color",
-                "default": "#ffffff"
+                "default": "#000000"
             },
             "header_and_footer_color": {
                 "type": "select",
@@ -113,17 +113,10 @@
                 "type": "select",
                 "options": [
                     "Modern sans-serif",
-                    "Elegant serif"
+                    "Elegant serif",
+                    "Consistent mono"
                 ],
                 "default": "Modern sans-serif"
-            },
-            "signup_heading": {
-                "type": "text",
-                "description": "Used in your footer across your theme, defaults to site title when empty"
-            },
-            "signup_subheading": {
-                "type": "text",
-                "description": "Defaults to site description when empty"
             },
             "header_style": {
                 "type": "select",
@@ -163,14 +156,14 @@
                     "List",
                     "Grid"
                 ],
-                "default": "List",
+                "default": "Grid",
                 "group": "homepage"
             },
             "show_images_in_feed": {
                 "type": "boolean",
                 "default": true,
                 "group": "homepage",
-                "visibility": "post_feed_style:List"
+                "visibility": "post_feed_style:Grid"
             },
             "show_author": {
                 "type": "boolean",
