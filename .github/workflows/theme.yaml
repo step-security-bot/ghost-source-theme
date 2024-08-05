@@ -18,12 +18,9 @@ jobs:
 
       - uses: actions/checkout@v4
         name: Checkout Repository
-        with:
-          fetch-depth: 1
-          persist-credentials: false
       
       - name: Deploy Ghost Theme to website
-        uses: sredevopsorg/action-deploy-theme@main
+        uses: sredevopsorg/action-deploy-theme@v1.0.2
         continue-on-error: false
         with:
           api-url: ${{ secrets.SREDEVOPS_API_URL }}
