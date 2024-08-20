@@ -59,11 +59,15 @@
     </article>
         {{#if comments}}
         <div class="gh-comments gh-canvas">
+            {{#if @member}}
+                {{comments count=false mode=dark title="Opinions?"}}
+            {{else}}
             {{> "social-sso"}}
             <span></span>
             <br /> 
             <br />
             {{comments count=false mode=dark title=" "}}
+            {{/if}}
         </div>
     {{/if}}
 

@@ -1,3 +1,10 @@
+/* Tailwind - add this part */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ... */
+
 /* Table of contents
 /* ------------------------------------------------------------
 
@@ -963,12 +970,17 @@ Search                         LOGO                    Login Subscribe
 
 .gh-card-excerpt {
     display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
     overflow-y: hidden;
     margin-top: 8px;
     font-size: 1.45rem;
     line-height: 1.4;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
 }
 
 .gh-card-meta {
@@ -1945,6 +1957,7 @@ Search                         LOGO                    Login Subscribe
     color: var(--color-secondary-text);
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2;
 }
 
 .gh-recommendations button {
@@ -3554,4 +3567,133 @@ figcaption a {
     display: block;
     font-size: 0.9rem;
     letter-spacing: .2px
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ------------------------ Agolia search UI ------------------------ */
+
+#search_wrapper{
+    @apply fixed w-full h-screen left-0 top-0 backdrop-blur-sm flex justify-center z-[9999];
+}
+
+.agolia_modal_box{
+    @apply bg-[#1E293B] max-w-xl min-w-[800px] max-h-[600px] self-start mt-[10vmin] rounded-xl border-t border-gray-100 border-opacity-10;
+}
+
+.agolia_modal_box header{
+    @apply px-4 py-2 border-b border-gray-100 border-opacity-10;
+}
+
+.agolia_modal_box .agolia_search_hits{
+    @apply max-h-96 overflow-y-auto px-4 py-8;
+}
+
+.agolia_modal_box footer {
+    @apply flex justify-end border-t border-gray-100 border-opacity-10;
+}
+
+.agolia_modal_box footer .agolia_logo_wrapper{
+    @apply flex gap-x-3 items-center p-5;
+}
+
+.agolia_modal_box footer .agolia_logo_wrapper span{
+    @apply text-gray-500 text-[12px] font-mono block;
+}
+
+/* agolia css overwrite rules */
+
+.ais-SearchBox-form {
+    @apply w-full;
+}
+
+.ais-SearchBox-form input {
+    @apply w-full bg-transparent px-10 py-3 text-gray-50 outline-none; 
+}
+
+.ais-SearchBox-submit{
+    @apply absolute left-2 top-1/2 -translate-y-1/2;
+}
+
+.ais-SearchBox-submitIcon{
+    @apply h-4 w-4 fill-slate-400;
+}
+
+.ais-SearchBox-reset{
+    @apply absolute right-2 top-1/2 -translate-y-1/2;
+}
+
+.ais-SearchBox-resetIcon{
+    @apply h-3 w-3 fill-slate-400;
+}
+
+.ais-Hits-list{
+    @apply flex flex-col gap-y-3;
+}
+
+.ais-Hits--empty{
+    @apply font-medium text-center text-slate-400;
+}
+.ais-Highlight-highlighted, .ais-Snippet-highlighted{
+    @apply bg-transparent text-white font-semibold;
+}
+
+/* agolia hit item template */
+.hit-item{
+    @apply flex flex-col cursor-pointer bg-[#e2e8f00d] p-3.5 rounded-lg;
+}
+.hit-title{
+    @apply font-medium flex items-center text-slate-400;
+}
+.hit-type{
+    @apply px-1.5 py-0.5 text-xs bg-[#fff3] rounded-md ml-3 capitalize;
+}
+.hit-description{
+    @apply  mt-1 text-sm text-slate-400;
 }

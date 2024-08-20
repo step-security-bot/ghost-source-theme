@@ -21,11 +21,23 @@
                 {{/foreach}}
             </div>
             <div class="gh-header-middle">
-                {{#foreach posts from="2" limit="2"}}
+                {{#foreach posts from="2" limit="3"}}
                     {{> "post-card" imageSizes="s"}}
                 {{/foreach}}
             </div>
             <div class="gh-header-right">
+                {{#if @custom.show_featured_posts}}
+                    {{> "components/featured" showFeatured=@custom.show_featured_posts limit=6}}
+                {{else}}
+                    <div class="gh-featured-feed">
+                        {{#foreach posts from="4" limit="5"}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    </div>
+                {{/if}}
+            </div>
+
+            {{!-- <div class="gh-header-right">
                 {{#if @custom.show_featured_posts}}
                     {{> "components/featured" showFeatured=@custom.show_featured_posts limit=4}}
                 {{else}}
@@ -35,7 +47,7 @@
                         {{/foreach}}
                     </div>
                 {{/if}}
-            </div>
+            </div> --}}
         {{/match}}
 
         {{!-- Magazine layout --}}

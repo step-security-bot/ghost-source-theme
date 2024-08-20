@@ -1,8 +1,5 @@
-{{!< default}}
-{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
-
-
-<main class="gh-main">
+{{!< default}} {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+    <main class="gh-main">
 
     <article class="gh-article">
 
@@ -13,18 +10,20 @@
 
         <section class="gh-content gh-canvas is-body">
 
-<section class="error-message">
-<h1 class="error-code">404</h1>
-	<a href="{{@site.url}}" title="Go to the front page of SREDevOps.org or try searching below." referrerpolicy="no-referrer" rel="home">Go to the front page of SREDevOps.org</a> or try searching below. 
-Search with Google Custom Search Engine:
-<script async src="https://cse.google.com/cse.js?cx=f4d905c360b884054" type="text/javascript">
-</script>
-<div class="gcse-search"></div>
-        </section>
+            <section class="error-message">
+                <h1 class="error-code">404</h1>
+                <a href="{{@site.url}}" title="Go to the front page of SREDevOps.org or try searching below."
+                    referrerpolicy="no-referrer" rel="home">Go to the front page of SREDevOps.org</a> or try searching
+                below.
+            </section>
+            <section class="search-form">
+                Click here to Search in our site with Algolia
+                <button class="gh-search gh-icon-button" aria-label="Search in SREDevOps.org" onclick="openModal();search.start();">
+                    {{> "icons/search"}}
+                </button>
+            </section>
 
     </article>
 
 
-</main>
-
-
+    </main>

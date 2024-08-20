@@ -1,5 +1,6 @@
 const {series, watch, src, dest, parallel} = require('gulp');
 const pump = require('pump');
+const tailwind = require("tailwindcss");
 // const path = require('path');
 // const releaseUtils = require('@tryghost/release-utils');
 // const inquirer = require('inquirer');
@@ -32,16 +33,18 @@ const handleError = (done) => {
 
 function hbs(done) {
     pump([
-        src(['*.hbs', 'partials/**/*.hbs']),
+        src(['*.hbs', 'partials/**/*.hbs', '!node_modules/**/*.hbs']),
         livereload()
     ], handleError(done));
+    css(done);
 }
 
 function css(done) {
     pump([
-        src('assets/css/*.css', {sourcemaps: true}),
+        src('assets/css/*.css', {sourcemaps: false}),
         postcss([
             easyimport,
+            tailwind(),
             autoprefixer(),
             cssnano()
         ]),

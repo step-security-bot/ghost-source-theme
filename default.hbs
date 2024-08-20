@@ -11,12 +11,17 @@
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
+    <link rel="preload" as="style" href="{{asset "built/brands.css"}}">
     
     {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
     {{> "typography/fonts"}}
 
     {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "built/brands.css"}}">
+
+    {{!-- Favicon --}}
+    <link rel="icon" href="{{@site.icon}}" type="image/png">
 
     {{!-- Custom background color --}}
     <style>
@@ -24,10 +29,11 @@
             --background-color: {{@custom.site_background_color}}
         }
     </style>
+
 {{#is "home, page, author"}}
     {{!-- Home dont need change locales --}}
-{{else}}
-    <script>
+    {{else}}
+        <script>
         /* Set the language attribute on the HTML element based on the subpath of the URL
         This script will set the language attribute on the HTML element based on the subpath of the URL
         */
@@ -49,12 +55,11 @@
 
             document.querySelector('html').setAttribute('lang', lang);
         });
-    </script>
+        </script>
 {{/is}}
 
-    <link rel="stylesheet" type="text/css" href="{{asset "built/brands.css"}}">
     {{!-- Ghost outputs important meta data with this tag --}}
-    {{ghost_head}}
+{{ghost_head}}
 
 </head>
 
@@ -126,7 +131,6 @@
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
-
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
 
