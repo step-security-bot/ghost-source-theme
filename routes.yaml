@@ -1,27 +1,16 @@
 routes:
-  # /apple-news/:
-  #   controller: channel
-  #   filter: tag:[iphone,ipad,mac]
-  # /editors-column/:
-  #   controller: channel
-  #   filter: tag:column+primary_author:cameron
-  # /es/:
-  #   controller: channel
-  #   filter: "tag:[hash-es,es]"
-    
-  # /en/:
-  #   controller: channel
-  #   filter: "tag:[hash-en,en]"
-
-  # /br/:
-  #   controller: channel
-  #   filter: "tag:[hash-br,br]"
-
   /:
     controller: channel
-    filter: "tag:hash-home"
-    template: home
-    rss: true
+    template: index
+    # filter: 
+    # rss: true
+    
+
+  /recommended/:
+    # controller: channel
+    # filter: tag:recommended
+    template: recommended
+    rss: false
     
 
 collections:
@@ -29,7 +18,7 @@ collections:
   #   template: home
 
   /es/:
-    template: home
+    template: index-es
     permalink: /es/{slug}/
     filter: tag:es+tag:-en+tag:-br
     # order: published_at.asc
@@ -37,7 +26,7 @@ collections:
     # rss: true
 
   /en/:
-    template: home
+    template: index-en
     permalink: /en/{slug}/
     filter: tag:en+tag:-es+tag:-br
     # order: published_at/.asc
@@ -45,7 +34,7 @@ collections:
     # rss: true
 
   /br/:
-    template: home
+    template: index-br
     permalink: /br/{slug}/
     filter: tag:br+tag:-es+tag:-en
     # order: published_at.asc

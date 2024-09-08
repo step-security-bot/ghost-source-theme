@@ -48,7 +48,7 @@
             {{/if}}
         </header>
 
-        <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+        <section class="gh-content gh-canvas is-body">
             <aside class="gh-sidebar"><div class="gh-toc"></div></aside> 
             <section class="gh-content featured-image">
             {{> "feature-image" size="s" class="gh-article-image"}}
@@ -64,8 +64,6 @@
             {{else}}
             {{> "social-sso"}}
             <span></span>
-            <br /> 
-            <br />
             {{comments count=false mode=dark title=" "}}
             {{/if}}
         </div>
