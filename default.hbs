@@ -3,7 +3,11 @@
 <head>
 
     {{!-- Basic meta - advanced meta is output with {{ghost_head}} below --}}
-    <title>{{meta_title}}</title>
+{{#is "home"}}
+    <title>{{@site.title}} - {{@site.description}}</title>
+{{else}}
+    <title>{{meta_title}} - {{@site.title}}</title>
+{{/is}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,6 +16,9 @@
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
     <link rel="preload" as="style" href="{{asset "built/brands.css"}}">
+    {{#is "post"}}
+    <link rel="preload" as="style" href="{{asset "built/tocbot.css"}}">
+    {{/is}}
     
     {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
     {{> "typography/fonts"}}
@@ -60,7 +67,6 @@
 
     {{!-- Ghost outputs important meta data with this tag --}}
 {{ghost_head}}
-
 </head>
 
 <body class="{{body_class}} has-{{#match @custom.title_font "Elegant serif"}}serif{{else match @custom.title_font "Consistent mono"}}mono{{else}}sans{{/match}}-title has-{{#match @custom.body_font "Elegant serif"}}serif{{else}}sans{{/match}}-body">
@@ -79,42 +85,8 @@
 {{/is}}
 
 {{#is "post"}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.css" integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <style>
-        .gh-content {
-            position: relative;
-        }
-
-        .gh-toc > .toc-list {
-            position: relative;
-            padding-right: 20px;
-        }
-
-        .toc-list {
-            overflow: hidden;
-            list-style: none;
-        }
-
-        @media (min-width: 1300px) {
-            .gh-sidebar {
-                position: absolute; 
-                top: 0;
-                bottom: 0;
-                margin-top: 4vmin;
-                grid-column: wide-start / main-start; /* Place the TOC to the left of the content */
-            }
-
-            .gh-toc {
-                position: sticky; /* On larger screens, TOC will stay in the same spot on the page */
-                top: 4vmin;
-            }
-        }
-
-        .gh-toc .is-active-link::before {
-            background-color: var(--ghost-accent-color); /* Defines TOC   accent color based on Accent color set in Ghost Admin */
-        } 
-        </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.28.2/tocbot.min.js" integrity="sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset "built/tocbot.css"}}">
+    <script src="{{asset "js/lib/tocbot.js" type="text/javascript"}}"></script>
         <script>
             tocbot.init({
                 // Where to render the table of contents.
@@ -131,6 +103,7 @@
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
+
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
 
