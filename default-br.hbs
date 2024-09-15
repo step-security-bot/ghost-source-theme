@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt" class="has-light-text">
+<head>
+
+  {{!-- Basic meta - advanced meta is output with {{ghost_head}} below --}}
+  {{#is "home"}}
+  <title>{{@site.title}} - {{@site.description}}</title>
+  {{else}}
+  <title>{{meta_title}} - {{@site.title}}</title>
+  {{/is}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  {{!-- Preload main styles and scripts for better performance --}}
+  <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
+  <link rel="preload" as="script" href="{{asset "built/source.js"}}">
+  <link rel="preload" as="style" href="{{asset "built/brands.css"}}">
+  {{#is "post"}}
+  <link rel="preload" as="style" href="{{asset "built/tocbot.css"}}">
+  {{/is}}
+
+  {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
+  {{> "typography/fonts"}}
+
+  {{!-- Theme assets - use the {{asset}} helper to reference styles & scripts, this will take care of caching and
+  cache-busting automatically --}}
+  <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
+  <link rel="stylesheet" type="text/css" href="{{asset "built/brands.css"}}">
+
+
+  {{!-- Custom background color --}}
+  <style>
+    :root {
+      --background-color: {{@custom.site_background_color}}
+    }
+  </style>
+
+  {{!-- Ghost outputs important meta data with this tag --}}
+  {{ghost_head}}
+</head>
+
+<body class="{{body_class}}">
+
+  <div class="gh-viewport">
+
+    {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
+
+    {{{body}}}
+
+    {{> "components/footer"}}
+
+  </div>
+  {{#is "post, page"}}
+  {{> "lightbox"}}
+  {{/is}}
+
+  {{#is "post"}}
+  <link rel="stylesheet" type="text/css" href="{{asset "built/tocbot.css"}}">
+  <script src="{{asset "js/lib/tocbot.js" type="text/javascript" }}"></script>
+  <script>
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '.gh-toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.gh-content',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      // Ensure correct positioning
+      hasInnerContainers: true,
+    });
+  </script>
+  {{/is}}
+
+  {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
+  <script src="{{asset "built/source.js"}}"></script>
+
+  {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing
+  body tag --}}
+  {{ghost_foot}}
+
+</body>
+
+</html>

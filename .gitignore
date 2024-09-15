@@ -29,3 +29,4 @@ changelog.md.bk
 old/
 **.local
 **.local.**
+!assets/js/lib/**

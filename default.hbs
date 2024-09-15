@@ -27,9 +27,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}">
     <link rel="stylesheet" type="text/css" href="{{asset "built/brands.css"}}">
 
-    {{!-- Favicon --}}
-    <link rel="icon" href="{{@site.icon}}" type="image/png">
-
     {{!-- Custom background color --}}
     <style>
         :root {
@@ -69,7 +66,7 @@
 {{ghost_head}}
 </head>
 
-<body class="{{body_class}} has-{{#match @custom.title_font "Elegant serif"}}serif{{else match @custom.title_font "Consistent mono"}}mono{{else}}sans{{/match}}-title has-{{#match @custom.body_font "Elegant serif"}}serif{{else}}sans{{/match}}-body">
+<body class="{{body_class}}">
 
 <div class="gh-viewport">
     

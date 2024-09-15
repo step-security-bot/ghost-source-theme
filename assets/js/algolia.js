@@ -662,7 +662,9 @@
                       r
                     );
                   };
-                if (!0 !== (void 0 !== r.cacheable ? r.cacheable : e.cacheable))
+                if (
+                  !(void 0 !== r.cacheable ? r.cacheable : e.cacheable === !0)
+                )
                   return n();
                 var a = {
                   request: e,
