@@ -2,7 +2,7 @@
     "name": "ghost-source-theme",
     "description": "Fork of the default theme of Ghost publishing platform, customized for sredevops.org",
     "demo": "https://sredevops.org",
-    "version": "1.6.7",
+    "version": "1.6.8",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -58,7 +58,7 @@
         "defaults"
     ],
     "config": {
-        "posts_per_page": 27,
+        "posts_per_page": 28,
         "image_sizes": {
             "xs": {
                 "width": 80
@@ -105,24 +105,6 @@
                     "Accent color"
                 ],
                 "default": "Background color"
-            },
-            "title_font": {
-                "type": "select",
-                "options": [
-                    "Modern sans-serif",
-                    "Elegant serif",
-                    "Consistent mono"
-                ],
-                "default": "Modern sans-serif"
-            },
-            "body_font": {
-                "type": "select",
-                "options": [
-                    "Modern sans-serif",
-                    "Elegant serif",
-                    "Consistent mono"
-                ],
-                "default": "Modern sans-serif"
             },
             "header_style": {
                 "type": "select",

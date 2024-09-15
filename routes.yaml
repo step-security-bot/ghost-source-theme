@@ -1,16 +1,15 @@
 routes:
   /:
     controller: channel
-    template: index
-    # filter: 
-    # rss: true
-    
+    template: home
+    rss: true
+    # filter:
 
-  /recommended/:
-    # controller: channel
-    # filter: tag:recommended
-    template: recommended
-    rss: false
+  # /recommend/:
+  #   # controller: channel
+  #   # filter: tag:recommended
+  #   template: recommend
+  #   rss: false
     
 
 collections:
@@ -18,7 +17,7 @@ collections:
   #   template: home
 
   /es/:
-    template: index-es
+    template: home-es
     permalink: /es/{slug}/
     filter: tag:es+tag:-en+tag:-br
     # order: published_at.asc
@@ -26,7 +25,7 @@ collections:
     # rss: true
 
   /en/:
-    template: index-en
+    template: home-en
     permalink: /en/{slug}/
     filter: tag:en+tag:-es+tag:-br
     # order: published_at/.asc
@@ -34,7 +33,7 @@ collections:
     # rss: true
 
   /br/:
-    template: index-br
+    template: home-br
     permalink: /br/{slug}/
     filter: tag:br+tag:-es+tag:-en
     # order: published_at.asc
